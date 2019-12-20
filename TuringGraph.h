@@ -1,4 +1,5 @@
-#pragma once
+#ifndef _TURING_GRAPH_GUARD_
+#define _TURING_GRAPH_GUARD_
 #include <vector>
 #include <iostream>
 
@@ -75,4 +76,5 @@ private:
 	std::vector<Node*> nodes;
 	Node* curr = nullptr;
 };
+#endif
 

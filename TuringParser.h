@@ -1,4 +1,6 @@
-#pragma once
+#ifndef  _TURING_PARSER_GUARD_
+#define _TURING_PARSER_GUARD
+
 #include "TuringGraph.h"
 
 #include <string>
@@ -24,4 +26,4 @@ public:
 private:
 	TuringGraph program;
 };
-
+#endif

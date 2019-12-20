@@ -1,4 +1,5 @@
-#pragma once
+#ifndef _TURING_MACHINE_GUARD_
+#define _TURING_MACHINE_GUARD_
 #include "TuringGraph.h"
 
 #include <vector>
@@ -21,4 +22,4 @@ private:
 	std::vector<char> tape;
 	int pos = 0;
 };
-
+#endif
