@@ -39,15 +39,13 @@ public:
 
 	void Destroy();
 
+	void Reset();
+
 	~TuringGraph();
 
 	friend std::ostream& operator<<(std::ostream& os, const TuringGraph& tg);
 
 private:
-	int convert(char c) const;
-	char convert(int i) const;
-	void destroy();
-
 	struct Edge
 	{
 		Edge() { *this = { -1, 'e', 0 }; }
@@ -66,6 +64,11 @@ private:
 		std::vector<Edge> edges;
 
 	};
+
+	int convert(char c) const;
+	char convert(int i) const;
+	static int numberOfChildren(const Node& node);
+	void destroy();
 
 	Node posExit{ -1 };
 	Node negExit{ -2 };

@@ -1,5 +1,7 @@
 #pragma once
 #include "TuringGraph.h"
+
+#include <vector>
 #include <iostream>
 
 class TuringMachine
@@ -7,11 +9,9 @@ class TuringMachine
 public:
 	TuringMachine(TuringGraph& graph, std::vector<char> tape, int position = 2);
 
-	bool ExecuteProgram();
+	bool ExecuteProgram(std::ostream& os = std::cout);
 
-	void SetPos(int pos);
-
-	void Move();
+	void Move(std::ostream& os = std::cout);
 
 	friend std::ostream& operator<<(std::ostream& os, const TuringMachine& tm);
 

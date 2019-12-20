@@ -1,8 +1,7 @@
 #pragma once
 #include "TuringGraph.h"
-#include <fstream>
+
 #include <string>
-#include <stdio.h>
 #include <vector>
 
 class InvalidNameException
@@ -21,6 +20,7 @@ public:
 	std::vector<char>& GetInput(const std::string& inputFile);
 
 	int GetPosition(const std::string& inputFile);
+
 private:
 	TuringGraph program;
 };

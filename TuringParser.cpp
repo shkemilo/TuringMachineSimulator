@@ -1,5 +1,11 @@
 #include "TuringParser.h"
+#include "TuringGraph.h"
+
+#include <string>
+#include <vector>
+#include <fstream>
 #include <sstream>
+#include <cstdio>
 
 TuringGraph& TuringParser::Compile(const std::string& programName)
 {
@@ -17,7 +23,6 @@ TuringGraph& TuringParser::Compile(const std::string& programName)
 		int result = sscanf(line.c_str(), "f(q %d, %c) = (q %c, %c, %d)", &q, &input, &qNext, &change, &move);
 		if (result != 5)
 			throw std::exception("Compile error: Invalid program format!");
-
 
 		program.AddNode(q);
 		program.AddEdge(q, input, qNext, change, move);

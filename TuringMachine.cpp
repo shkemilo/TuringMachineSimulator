@@ -1,43 +1,36 @@
 #include "TuringMachine.h"
+
 #include <iostream>
-#include <iomanip>
+#include <vector>
 
 TuringMachine::TuringMachine(TuringGraph& graph, std::vector<char> tape, int position) : graph(graph), tape(tape), pos(position)
 {
 }
 
-bool TuringMachine::ExecuteProgram()
+bool TuringMachine::ExecuteProgram(std::ostream& os)
 {
 	int i = 0;
 	while (true)
 	{
 		try
 		{
-			std::cout << "Step " << i++ << ": ";
-			Move();
+			os << "Step " << i++ << ": ";
+			Move(os);
 			system("pause");
 		}
 		catch (Finished & f)
 		{
+			graph.Reset();
 			return f.GetValid();
 		}
 	}
 }
 
-void TuringMachine::SetPos(int pos)
+void TuringMachine::Move(std::ostream& os) 
 {
-	this->pos = pos;
-}
-
-void TuringMachine::Move() 
-{
-	std::cout << *this << std::endl;
-	char change;
-	int move;
+	os << *this << std::endl;
 	
-	graph.NextState(tape[pos], tape[pos], move);
-
-	pos += move;
+	graph.NextState(tape[pos], tape[pos], pos);
 }
 
 std::ostream& operator<<(std::ostream& os, const TuringMachine& tm)
@@ -46,11 +39,13 @@ std::ostream& operator<<(std::ostream& os, const TuringMachine& tm)
 	for (unsigned i = 0; i < tm.tape.size() * 3; i++)
 		os << '-';
 	os << std::endl;
+
 	for (unsigned i = 0; i < tm.tape.size(); i++)
 		if (i == tm.pos)
 			os << '|' << tm.tape[i] << '|';
 		else
 			os << ' ' << tm.tape[i] << ' ';
+
 	os << std::endl;
 	for (unsigned i = 0; i < tm.tape.size() * 3; i++)
 		os << '-';
