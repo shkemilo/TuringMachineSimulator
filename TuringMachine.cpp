@@ -20,6 +20,7 @@ bool TuringMachine::ExecuteProgram(std::ostream& os)
 		}
 		catch (Finished & f)
 		{
+			os << "End state: " << *this << std::endl;
 			graph.Reset();
 			return f.GetValid();
 		}

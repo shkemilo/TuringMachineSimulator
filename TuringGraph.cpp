@@ -35,9 +35,9 @@ void TuringGraph::AddEdge(int srcNode, char input, char destNode, char change, i
 		throw std::exception("Unvalid move of Turing machine!");
 
 	if (destNode == '-')
-		destNode = -1;
-	else if (destNode == '+')
 		destNode = -2;
+	else if (destNode == '+')
+		destNode = -1;
 	else
 		destNode -= '0';
 
